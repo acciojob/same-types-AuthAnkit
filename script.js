@@ -1,14 +1,22 @@
 function isSameType(value1, value2) {
-  if (Number.isNaN(value1) && Number.isNaN(value2)) {
+  // Convert to real numbers if possible
+  let v1 = Number(value1);
+  let v2 = Number(value2);
+
+  // Check if both are NaN
+  if (Number.isNaN(v1) && Number.isNaN(v2)) {
     return true;
-  } else if (typeof value1 === typeof value2) {
-    return true;
-  } else {
-    return false;
   }
+
+  // If both are not NaN, compare actual types
+  if (typeof v1 === typeof v2 && !Number.isNaN(v1) && !Number.isNaN(v2)) {
+    return true;
+  }
+
+  return false;
 }
 
-// do not change the code below.
+// Do not change the code below
 let value1 = prompt("Enter Start of the Range.");
 let value2 = prompt("Enter End Of the Range.");
 alert(isSameType(value1, value2));
